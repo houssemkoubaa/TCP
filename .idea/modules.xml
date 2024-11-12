@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Client_Chat1/Client_Chat2.iml" filepath="$PROJECT_DIR$/Client_Chat1/Client_Chat2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Client_Chat1/Client_Chat1.iml" filepath="$PROJECT_DIR$/Client_Chat1/Client_Chat1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Server_Chat1/Server_Chat1.iml" filepath="$PROJECT_DIR$/Server_Chat1/Server_Chat1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/TCP-Multiple-Client-Server-Chat-Application-in-JAVA-using-Sockets.iml" filepath="$PROJECT_DIR$/.idea/TCP-Multiple-Client-Server-Chat-Application-in-JAVA-using-Sockets.iml" />
     </modules>

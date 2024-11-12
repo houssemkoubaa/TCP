@@ -405,7 +405,7 @@ public class Frame_clientside extends javax.swing.JFrame {
             tz_chat.requestFocus();
         } else {
             String toClient = tz_to_clientname.getText();
-            if (toClient == null) {
+            if (toClient.equals("")) {
                 try {
                     writer.println(Clientname + ":" + tz_chat.getText() + ":" + "Chat");
                     writer.flush(); // this command will flush the buffer.
