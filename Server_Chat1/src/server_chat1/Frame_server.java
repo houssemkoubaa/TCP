@@ -277,7 +277,8 @@ public class Frame_server extends javax.swing.JFrame {
 
                     ta_chat.append("recieved: " + message + "\n");
                     dataset = message.split(":");
-
+                    if (dataset.length==3)
+                    {
                     if (dataset[2].equals(connect)) {
                         tellEveryone((dataset[0] + ":" + dataset[1] + ":" + chat));
                     } else if (dataset[2].equals(disconnect)) {
@@ -287,6 +288,18 @@ public class Frame_server extends javax.swing.JFrame {
                         tellEveryone(message);
                     } else {
                         ta_chat.append("the conditions are not met. \n");
+                    }
+                    }else{
+                        if (dataset[4].equals(connect)) {
+                            tellEveryone((dataset[0] + ":" + dataset[3] + ":" + chat));
+                        } else if (dataset[4].equals(disconnect)) {
+                            tellEveryone((dataset[0] + ":is disconnected" + ":" + chat));
+                            clientRemove(dataset[0]);
+                        } else if (dataset[4].equals(chat)) {
+                            tellEveryone(message);
+                        } else {
+                            ta_chat.append("the conditions are not met. \n");
+                        }
                     }
                 }
             } catch (Exception e) {

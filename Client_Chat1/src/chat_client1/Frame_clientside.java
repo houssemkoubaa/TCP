@@ -416,7 +416,7 @@ public class Frame_clientside extends javax.swing.JFrame {
                 tz_chat.requestFocus();
             }else{
                 try {
-                    writer.println(Clientname + ":" + ": to :" + toClient + "  " + tz_chat.getText() + ":" + "Chat");
+                    writer.println(Clientname + ":" + "to:" + toClient + ":" + tz_chat.getText() + ":" + "Chat");
                     writer.flush(); // this command will flush the buffer.
                 } catch (Exception e) {
                     ta_chat.append("Failed to send the message! \n");
@@ -451,18 +451,33 @@ public class Frame_clientside extends javax.swing.JFrame {
             try {
                 while ((stream = reader.readLine()) != null) {
                     dataset = stream.split(":");
-                    if (dataset[2].equals(chat)) {
-                        ta_chat.append(dataset[0] + ":" + dataset[1] + "\n");
-                        ta_chat.setCaretPosition(ta_chat.getDocument().getLength());
-                    } else if (dataset[2].equals(connect)) {
-                        ta_chat.removeAll();
-                        clientAdd(dataset[0]);
-                    } else if (dataset[2].equals(disconnect)) {
-                        clientRemove(dataset[0]);
+                    if (dataset.length == 5){
+                        if (dataset[4].equals(chat)) {
+                            ta_chat.append(dataset[0] + ":" + dataset[3] + "\n");
+                            ta_chat.setCaretPosition(ta_chat.getDocument().getLength());
+                        } else if (dataset[4].equals(connect)) {
+                            ta_chat.removeAll();
+                            clientAdd(dataset[0]);
+                        } else if (dataset[4].equals(disconnect)) {
+                            clientRemove(dataset[0]);
+                        }
+                        //clients.setText("");
+                        writeclients();
+                        clients.clear();
+                    }else{
+                        if (dataset[2].equals(chat)) {
+                            ta_chat.append(dataset[0] + ":" + dataset[1] + "\n");
+                            ta_chat.setCaretPosition(ta_chat.getDocument().getLength());
+                        } else if (dataset[2].equals(connect)) {
+                            ta_chat.removeAll();
+                            clientAdd(dataset[0]);
+                        } else if (dataset[2].equals(disconnect)) {
+                            clientRemove(dataset[0]);
+                        }
+                        //clients.setText("");
+                        writeclients();
                     }
-                    //clients.setText("");
-                    writeclients();
-                    clients.clear();
+
                 }
 
             } catch (Exception e) {
