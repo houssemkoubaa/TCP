@@ -451,18 +451,7 @@ public class Frame_clientside extends javax.swing.JFrame {
             try {
                 while ((stream = reader.readLine()) != null) {
                     dataset = stream.split(":");
-                    if (dataset.length == 3){
-                        if (dataset[2].equals(chat)) {
-                            ta_chat.append(dataset[0] + ":" + dataset[1] + "\n");
-                            ta_chat.setCaretPosition(ta_chat.getDocument().getLength());
-                        } else if (dataset[2].equals(connect)) {
-                            ta_chat.removeAll();
-                            clientAdd(dataset[0]);
-                        } else if (dataset[2].equals(disconnect)) {
-                            clientRemove(dataset[0]);
-                        }
-
-                    }else{
+                    if (dataset.length == 5){
                         if (dataset[4].equals(chat)) {
                             ta_chat.append(dataset[0] + ":" + dataset[3] + "\n");
                             ta_chat.setCaretPosition(ta_chat.getDocument().getLength());
@@ -475,6 +464,16 @@ public class Frame_clientside extends javax.swing.JFrame {
                         //clients.setText("");
                         writeclients();
                         clients.clear();
+                    }else {
+                        if (dataset[2].equals(chat)) {
+                            ta_chat.append(dataset[0] + ":" + dataset[1] + "\n");
+                            ta_chat.setCaretPosition(ta_chat.getDocument().getLength());
+                        } else if (dataset[2].equals(connect)) {
+                            ta_chat.removeAll();
+                            clientAdd(dataset[0]);
+                        } else if (dataset[2].equals(disconnect)) {
+                            clientRemove(dataset[0]);
+                        }
                         //clients.setText("");
                         writeclients();
                     }
