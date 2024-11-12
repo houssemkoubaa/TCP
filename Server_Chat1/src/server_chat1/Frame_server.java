@@ -173,7 +173,7 @@ public class Frame_server extends javax.swing.JFrame {
 
     private void server_stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_server_stopActionPerformed
         try {
-            Thread.sleep(5000);    //5000 milliseconds is five second.
+            Thread.sleep(5000);//5000 milliseconds is five second.
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -201,9 +201,8 @@ public class Frame_server extends javax.swing.JFrame {
 
         // Check if the user is already in the list
         if (!users.contains(name)) {
-            ta_chat.append("Before " + name + " added. \n");
             users.add(name);  // Add user if not present
-            ta_chat.append("After " + name + " added. \n");
+            ta_chat.append(name);
 
             // Notify all clients about the online users
             String[] temperoryList = new String[(users.size())];
@@ -279,9 +278,6 @@ public class Frame_server extends javax.swing.JFrame {
                     ta_chat.append("recieved: " + message + "\n");
                     dataset = message.split(":");
 
-                    for (String token : dataset) {
-                        ta_chat.append(token + "\n");
-                    }
                     if (dataset[2].equals(connect)) {
                         tellEveryone((dataset[0] + ":" + dataset[1] + ":" + chat));
                     } else if (dataset[2].equals(disconnect)) {

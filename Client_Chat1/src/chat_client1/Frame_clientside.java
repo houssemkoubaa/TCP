@@ -344,7 +344,7 @@ public class Frame_clientside extends javax.swing.JFrame {
                 InputStreamReader streamreader = new InputStreamReader(S.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new PrintWriter(S.getOutputStream());
-                writer.println(Clientname + ":the client is connected: client");
+                writer.println(Clientname + ":the client is connected");
                 writer.flush();
                 isConnected = true;
             } catch (Exception e) {
@@ -416,7 +416,7 @@ public class Frame_clientside extends javax.swing.JFrame {
                 tz_chat.requestFocus();
             }else{
                 try {
-                    writer.println(Clientname + ":" + " to " + toClient + "  " + tz_chat.getText() + ":" + "Chat");
+                    writer.println(Clientname + ":" + ": to :" + toClient + "  " + tz_chat.getText() + ":" + "Chat");
                     writer.flush(); // this command will flush the buffer.
                 } catch (Exception e) {
                     ta_chat.append("Failed to send the message! \n");
